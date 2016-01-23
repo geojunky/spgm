@@ -281,7 +281,6 @@ namespace src{ namespace model {
             catchmentTags.push_back(*cit);
         }
 
-        Timer tBegin; 
 #pragma omp parallel for
         for(unsigned int ci=0; ci<catchmentTags.size(); ci++)
         {
@@ -339,8 +338,6 @@ namespace src{ namespace model {
                 }
             }
         }
-        Timer tEnd; 
-        printf("aa %e %d \n", Timer::Elapsed(tBegin, tEnd), catchmentTags.size());
 
 //#define DEBUG
 #ifdef DEBUG
