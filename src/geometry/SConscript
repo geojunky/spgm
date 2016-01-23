@@ -1,0 +1,9 @@
+Import('env')
+env.Append(CPPPATH=['.'])
+env.Append(CPPPATH=['../mem'])
+env.Append(CPPPATH=['../util'])
+
+env.Library('geometry', ['Triangulator.cc'])
+
+#for subdir in ['visualizer']:
+#    env.SConscript('%s/SConscript' % subdir, {'env': env})  

@@ -1,0 +1,10 @@
+Import('env')
+env.Append(CPPPATH=['.'])
+env.Append(CPPPATH=['../math'])
+env.Append(CPPPATH=['../mem'])
+env.Append(CPPPATH=['../util'])
+env.Append(CPPPATH=['../mesh'])
+env.Append(CPPPATH=['../parser'])
+
+env.Library('model', ['ModelBuilder.cc', 'Process.cc', 'Model.cc', 'Precipitation.cc', 'FluvialErosion.cc', 'FluvialErosionDeposition.cc', \
+'Uplift.cc', 'HillSlope.cc'])

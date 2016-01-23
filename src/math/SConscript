@@ -1,0 +1,12 @@
+Import('env')
+
+env.Append(CPPPATH=['../eigen/'])
+env.Append(CPPPATH=['../mem/'])
+env.Append(CPPPATH=['../mesh/'])
+env.Append(CPPPATH=['../geometry/'])
+env.Append(CPPPATH=['../util/'])
+env.Append(CPPPATH=['../model/'])
+env.Append(CPPPATH=['../parser/'])
+
+env.Append(CPPPATH=['.'])
+env.Library('math', ['Diffusion.cc'])

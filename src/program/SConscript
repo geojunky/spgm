@@ -1,0 +1,14 @@
+Import('env')
+# We require mem
+env.Append(CPPPATH=['../math/'])
+env.Append(CPPPATH=['../mem/'])
+env.Append(CPPPATH=['../mesh/'])
+env.Append(CPPPATH=['../geometry/'])
+env.Append(CPPPATH=['../util/'])
+env.Append(CPPPATH=['../model/'])
+env.Append(CPPPATH=['../parser/'])
+
+libs=['mem', 'model', 'mesh', 'geometry', 'util', 'gomp', 'parser', 'math']
+
+env.Program('spgm', ['spgm.cc'], LIBS=libs, LIBPATH=['../mem', '../mesh', '../geometry', '../util', '../model', '../parser', '../math'])
+
