@@ -23,6 +23,8 @@ Installation
 For compiling SPGM please see INSTALL.txt. Detailed descriptions of a number of 
 simple model setups are available on the github repository: 
 
+https://github.com/rh-downunder/spgm
+
 
 Copyright
 =========
