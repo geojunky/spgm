@@ -204,7 +204,7 @@ namespace src{ namespace model {
                 /*-----------------------------------------------------------------------------
                  * Compute slope and Qe 
                  *-----------------------------------------------------------------------------*/
-                float dx    = sqrt(pow(st->X(si) - st->X(rsi), 2.) + pow(st->Y(si) - st->Y(rsi), 2.));
+                float dx    = sqrt(pow(st->X(si) - st->X(rsi), float(2.)) + pow(st->Y(si) - st->Y(rsi), float(2.)));
                 float dh    = st->Z(si) - st->Z(rsi);
                 float slope = dh/dx;
                 float Qe    = m_Kf * pow(slope, m_streamPowerN) * pow((*discharge)(si), m_streamPowerM);
