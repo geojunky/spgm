@@ -25,7 +25,7 @@ simple models in the 'examples' folder. These models should be run from within t
 model folder by invoking the executable with the corresponding parameter file. For 
 instance, the first example can be run as follows:
 
-# cd examples/ex1
+# cd <base directory path>examples/ex1
 
 # <base directory path>/build/release/program/spgm ex1.cfg
 
