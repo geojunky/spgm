@@ -17,13 +17,17 @@ and output generation is particularly geared toward ease of adaptability for stu
 a wide range of geomorphological scenarios.
 
 
-Installation
-============
+Installation & Testing
+======================
 
-For compiling SPGM please see INSTALL.txt. Detailed descriptions of a number of 
-simple model setups are available on the github repository: 
+For compiling SPGM please see INSTALL.txt. The code can be tested by running the 
+simple models in the 'examples' folder. These models should be run from within the 
+model folder by invoking the executable with the corresponding parameter file. For 
+instance, the first example can be run as follows:
 
-https://github.com/rh-downunder/spgm
+# cd examples/ex1
+
+# <base directory path>/build/release/program/spgm ex1.cfg
 
 
 Copyright
