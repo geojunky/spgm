@@ -1,0 +1,15 @@
+Import('env')
+# We require mem
+env.Append(CPPPATH=['../math/'])
+env.Append(CPPPATH=['../mem/'])
+env.Append(CPPPATH=['../mesh/'])
+env.Append(CPPPATH=['../geometry/'])
+env.Append(CPPPATH=['../util/'])
+env.Append(CPPPATH=['../model/'])
+env.Append(CPPPATH=['../parser/'])
+env.Append(CPPPATH=['./'])
+
+libs=['mem', 'model', 'mesh', 'geometry', 'util', 'gomp', 'parser', 'math']
+
+env.Program('testsuite', ['TestSuite.cc', 'TestMem.cc', 'TestConfig.cc', 'TestDiffusion.cc', 'TestMesh.cc'], LIBS=libs, LIBPATH=['../mem', '../mesh', '../geometry', '../util', '../model', '../parser', '../math'])
+
