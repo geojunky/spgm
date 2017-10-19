@@ -1,51 +1,69 @@
-import platform
+#!python
+#!/usr/bin/env python
+import os, os.path, sys, fnmatch
 
-# Let's define a common build environment first...
-common_env = Environment()
+# ------------------------------------------------------------------
+# ------------- BUILD ENVIRONMENT ----------------------------------
+# ------------------------------------------------------------------
+common_env = Environment(ENV = os.environ, tools = ['default'])
+
 # check dependencies
 conf = Configure(common_env)
 
-deps = ['pthread', 'gomp']
-
-for i in range(len(deps)):
-    if not conf.CheckLib(deps[i]):
-        print 'Did not find %s-lib, exiting!'%(deps[i])
-        Exit(1)
-    #end if
-#end for
-
-conf.env.Append(CCFLAGS = '-Wall')
+# ------------------------------------------------------------------
+# ------------- BUILD SETTINGS -------------------------------------
+# ------------------------------------------------------------------
+debug = int(ARGUMENTS.get('debug', 0))
+test  = int(ARGUMENTS.get('test', 0))
+release = 0
+if (debug):
+# Debug build
 # Add -g for debug builds
-debug = ARGUMENTS.get('debug', 0)
-if int(debug):
-    conf.env.Append(CCFLAGS = '-g')
-
+    conf.env.Append(CFLAGS = '-g')
+    conf.env.Append(CPPFLAGS = '-g')
+else:
 # Add -O3 for release builds
-release = ARGUMENTS.get('release', 1)
-if int(release) and not debug:
-    conf.env.Append(CCFLAGS = '-O3')
-
-# Check architecture
-if(platform.architecture()[0]=='64bit'):
-    conf.env.Append(CPPDEFINES={'ARCH64':1})
+    conf.env.Append(CFLAGS = '-O3')
+    conf.env.Append(CPPFLAGS = '-O3')
+    release = 1
+#end if
 
 # Finalize configuring environment
 env = conf.Finish()
 
-# version
-common_env.Append(CPPDEFINES={'VERSION': 1})
+# ------------------------------------------------------------------
+# ------------- BUILD TARGETS --------------------------------------
+# ------------------------------------------------------------------
+mode = ''
+if(debug):  mode = 'debug'
+else:       mode = 'release'
 
-# Our release build is derived from the common build environment...
-release_env = common_env.Clone()
-release_env.Append(CPPDEFINES=['RELEASE'])
-release_env.VariantDir('build/release', 'src')
+#
+# Paths
+#
+dirs = ['src']
 
-# We define our debug build environment in a similar fashion...
-debug_env = common_env.Clone()
-debug_env.Append(CPPDEFINES=['DEBUG'])
-debug_env.VariantDir('build/debug', 'src')
+for sd in dirs:
+    buildDir = os.path.join('build/%s'%(mode),sd)
+    consFile = os.path.join(buildDir,'SConscript')
+    common_env.VariantDir(buildDir, sd)
 
-for mode, env in dict(release=release_env,
-                     debug=debug_env).iteritems():
-    env.SConscript('build/%s/SConscript' % mode, {'env': env})
+    common_env.SConscript(consFile, {'env': common_env})
+#end for
 
+# ------------------------------------------------------------------
+# ------------- POST-BUILD ACTIONS ---------------------------------
+# ------------------------------------------------------------------
+# Add an action to run tests
+def runTests(target=None, source=None, env=None):
+    targetdir = target[0].dir
+    if(test):
+        print '\n[ *** Running Test-suite *** ]\n'
+        cmd = os.path.join('./build/%s'%(mode), 'src/tests/testsuite')
+        os.system(cmd)
+    #end if
+#end func
+
+runTestsCommand = Command( 'runTests', [], runTests)
+Depends(runTestsCommand, DEFAULT_TARGETS)
+Default(runTestsCommand)
