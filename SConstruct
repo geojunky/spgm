@@ -1,6 +1,6 @@
 #!python
 #!/usr/bin/env python
-import os, os.path, sys, fnmatch
+import os, os.path, sys, fnmatch, time
 
 # ------------------------------------------------------------------
 # ------------- BUILD ENVIRONMENT ----------------------------------
@@ -60,10 +60,13 @@ def runTests(target=None, source=None, env=None):
     if(test):
         print '\n[ *** Running Test-suite *** ]\n'
         cmd = os.path.join('./build/%s'%(mode), 'src/tests/testsuite')
+        while (not os.path.exists(cmd)):
+            pass
+        #wend
+        time.sleep(1)
         os.system(cmd)
     #end if
 #end func
 
 runTestsCommand = Command( 'runTests', [], runTests)
 Depends(runTestsCommand, DEFAULT_TARGETS)
-Default(runTestsCommand)

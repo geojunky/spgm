@@ -1,4 +1,4 @@
 Import('env')
 
-for subdir in ['math', 'util', 'mem', 'geometry', 'mesh', 'model', 'parser', 'program', 'tests']:
+for subdir in ['math', 'util', 'mem', 'geometry', 'mesh', 'model', 'parser', 'tests', 'program']:
     env.SConscript('%s/SConscript' % subdir, {'env': env})
