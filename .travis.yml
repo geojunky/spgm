@@ -1,19 +1,28 @@
 language: c++
 
-script: scons debug=1 && scons && scons debug=1 test=1 && scons test=1
+script: 
+    - scons debug=1
+    - scons debug=1 test=1 
+    - scons 
+    - scons test=1
 
 matrix:
   include:
-    # works on Precise and Trusty
     - os: linux
       addons:
         apt:
-          sources:
-            - ubuntu-toolchain-r-test
           packages:
-            - g++-4.9
+            - g++-4.0
       env:
-         - MATRIX_EVAL="CC=gcc-4.9 && CXX=g++-4.9"
+         - MATRIX_EVAL="CC=gcc-4.0 && CXX=g++-4.0"
+    
+    - os: linux
+      addons:
+        apt:
+          packages:
+            - g++-5
+      env:
+         - MATRIX_EVAL="CC=gcc-5 && CXX=g++-5"
 
 before_install:
     - eval "${MATRIX_EVAL}"
