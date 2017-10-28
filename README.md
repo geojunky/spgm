@@ -34,7 +34,7 @@ brew install scons
 	```bash
 	export CXX=g++-7
 	```
-	Note, ```g++-7``` serves only as an example -- ```CXX``` should be set to the gcc compiler installed on the system.
+	Note, ```g++-7``` serves only as an example. ```CXX``` should be set to the gcc compiler installed on the system.
 
 ## Compilation
 
