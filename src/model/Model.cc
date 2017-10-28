@@ -111,7 +111,7 @@ namespace src { namespace model {
 
         if(result == m_fields.end()) /* Field does not exist */
         {
-            m_fields.insert(make_pair<string, Field*>(f->GetName(), f));
+            m_fields.insert(pair<string, Field*>(f->GetName(), f));
         }
         else
         {
