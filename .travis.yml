@@ -1,5 +1,7 @@
 language: c++
 
+script: scons debug=1 && scons && scons debug=1 test=1 && scons test=1
+
 matrix:
   include:
     # works on Precise and Trusty
