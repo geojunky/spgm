@@ -11,6 +11,8 @@ matrix:
     - os: linux
       addons:
         apt:
+          sources:
+            - ubuntu-toolchain-r-test        
           packages:
             - g++-4.0
       env:
@@ -19,6 +21,8 @@ matrix:
     - os: linux
       addons:
         apt:
+          sources:
+            - ubuntu-toolchain-r-test        
           packages:
             - g++-5
       env:
