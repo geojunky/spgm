@@ -9,7 +9,32 @@ processes that contribute to mass redistribution on earth's surface are integrat
 
 ## Dependencies 
 
-SPGM uses **scons** for its build-system. On Linux/Unix systems **scons** can be installed using respective package management systems. On Macs, **scons** can be installed through **fink** or **homebrew**. Apart from **scons**, SPGM is fully self-contained and has no other dependencies. The code has been tested to run on Linux and Mac OSX systems with a gcc compiler (version 4.7+) installed. It should, nonetheless, work with earlier but relatively recent versions of the gcc compiler.
+SPGM uses **scons** for its build-system. Apart from **scons**, SPGM is fully self-contained and has no other dependencies. The code has been tested to run on Linux/Unix, Cygwin and Mac OS systems with a gcc compiler (version 4.7+) installed. It should, nonetheless, work with earlier but relatively recent versions of the gcc compiler.
+
+###Linux (Ubuntu)
+1. Install **scons** using ```apt-get```
+```sh
+apt-get install scons
+```
+
+###Cygwin
+1. The Cygwin ```setup``` program can be used to install **scons**
+
+###OSX
+1. Install **scons** using **MacPorts**:
+  ```sh
+sudo port install scons
+  ```
+Alternatively, Install **scons** using **homebrew**:
+  ```sh
+brew install scons
+  ```
+
+2. Set ```gcc``` compiler version :
+	```bash
+	export CXX=g++-7
+	```
+	Note, ```g++-7``` serves only as an example -- ```CXX``` should be set to the gcc compiler installed on the system.
 
 ## Compilation
 

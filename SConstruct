@@ -6,8 +6,11 @@ import os, os.path, sys, fnmatch, time
 # ------------- BUILD ENVIRONMENT ----------------------------------
 # ------------------------------------------------------------------
 common_env = Environment(ENV = os.environ, tools = ['default'])
-common_env['CXX']=os.environ['CXX']
-common_env['CC']=os.environ['CC']
+try:
+    common_env['CXX']=os.environ['CXX']
+except:
+    pass
+#end try    
 
 # check dependencies
 conf = Configure(common_env)
