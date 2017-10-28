@@ -11,16 +11,16 @@ processes that contribute to mass redistribution on earth's surface are integrat
 
 SPGM uses **scons** for its build-system. Apart from **scons**, SPGM is fully self-contained and has no other dependencies. The code has been tested to run on Linux/Unix, Cygwin and Mac OS systems with a gcc compiler (version 4.7+) installed. It should, nonetheless, work with earlier but relatively recent versions of the gcc compiler.
 
-###Linux (Ubuntu)
+### Linux (Ubuntu)
 1. Install **scons** using ```apt-get```:
 ```sh
 apt-get install scons
 ```
 
-###Cygwin
+### Cygwin
 1. The Cygwin ```setup``` program can be used to install **scons**.
 
-###OSX
+### OSX
 1. Install **scons** using **MacPorts**:
   ```sh
 sudo port install scons
