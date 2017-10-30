@@ -6,6 +6,7 @@
 SPGM embodies the implementation of a multi-process numerical model, where physical
 processes that contribute to mass redistribution on earth's surface are integrated separately to record geomorphological evolution. We leverage recent advances in flow routing algorithms and present a self-contained, extensible software framework that comprises a collection of modules which describe physical processes influencing earth's surface topography through time. The modular structure of the code, with clearly defined interfaces between mesh generation, implementation of optimized numerical algorithms and output generation is particularly geared toward ease of adaptability for studying a wide range of geomorphological scenarios.
 
+[![Alt text](https://img.youtube.com/vi/fY2e6LC-TdY/0.jpg)](https://www.youtube.com/watch?v=fY2e6LC-TdY)
 
 ## Dependencies 
 
