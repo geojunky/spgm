@@ -1,5 +1,6 @@
 # Scalable PaleoGeomorphology Model (SPGM)
 
+[![DOI](https://zenodo.org/badge/50230229.svg)](https://zenodo.org/badge/latestdoi/50230229)
 ![alt text](https://travis-ci.org/rh-downunder/spgm.svg?branch=master)
 
 ## Description
