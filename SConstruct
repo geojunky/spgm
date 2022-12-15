@@ -63,7 +63,7 @@ for sd in dirs:
 def runTests(target=None, source=None, env=None):
     targetdir = target[0].dir
     if(test):
-        print '\n[ *** Running Test-suite *** ]\n'
+        print ('\n[ *** Running Test-suite *** ]\n')
         cmd = os.path.join('./build/%s'%(mode), 'src/tests/testsuite')
         while (not os.path.exists(cmd)):
             pass
